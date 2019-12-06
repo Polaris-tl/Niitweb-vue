@@ -17,9 +17,9 @@
           </div>
           <div class="right fr">
             <ul class="clearfix">
-              <li><router-link style="text-decoration:none" to="/" >首页</router-link></li>
+              <li><router-link style="text-decoration:none" to="/" exact>首页</router-link></li>
               <li><router-link style="text-decoration:none" to="/jianjie">学校简介</router-link></li>
-              <li><router-link style="text-decoration:none" to="/shizi" >师资力量</router-link></li>
+              <li><router-link style="text-decoration:none" to="/shizhi" >师资力量</router-link></li>
               <li><router-link style="text-decoration:none" to="/zhuanye" >开设专业</router-link></li>
               <li><router-link style="text-decoration:none" to="/xinwen" >学校新闻</router-link></li>
               <li><router-link style="text-decoration:none" to="/xueyuan" >就业学员</router-link></li>
@@ -31,15 +31,10 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import {routerLink} from 'vue-router'
-Vue.use(VueRouter)
+import router from '../../router/index'
 export default {
   name: 'Header',
-  components:{
-    routerLink
-  }
+  router
 }
 </script>
 
