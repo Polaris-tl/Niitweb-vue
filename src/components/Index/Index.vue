@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div>
         <div class="banner">
           <img src="./images/banner.jpg" alt=""/>
         </div>
@@ -363,7 +363,8 @@ import '../../js/count'
 
 export default {
   name:'Index',
-  created:function(){
+  mounted(){
+    console.log($(".fake-layer"))
     //视频播放控制
     $(".fake-layer").click(function () {
       $(this).hide();
@@ -402,12 +403,12 @@ export default {
         $(pic[index]).show()
       }
     )
-  }
+  },
 }
 </script>
 
-<style lang="less" scope>
-  .index{
+<style lang="less" scoped>
+ 
   .banner {
     width : 1200px;
     margin: auto;
@@ -1018,5 +1019,5 @@ export default {
       }
     }
   }
-}
+
 </style>

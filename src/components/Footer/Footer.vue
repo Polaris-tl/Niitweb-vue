@@ -16,13 +16,13 @@
       </div>
       <div class="mid fl">
         <ul class="clearfix">
-          <li><a href="/">首页</a></li>
-          <li><a href="/jianjie">学校简介</a></li>
-          <li><a href="/shizi" >师资力量</a></li>
-          <li><a href="/zhuanye" >开设专业</a></li>
-          <li><a href="/xinwen" >学校新闻</a></li>
-          <li><a href="/xueyuan" >就业学员</a></li>
-          <li><a href="/luxian"  >来校路线</a></li>
+          <li><router-link style="text-decoration:none" to="/" exact>首页</router-link></li>
+              <li><router-link style="text-decoration:none" to="/jianjie">学校简介</router-link></li>
+              <li><router-link style="text-decoration:none" to="/shizhi" >师资力量</router-link></li>
+              <li><router-link style="text-decoration:none" to="/zhuanye" >开设专业</router-link></li>
+              <li><router-link style="text-decoration:none" to="/xinwen" >学校新闻</router-link></li>
+              <li><router-link style="text-decoration:none" to="/xueyuan" >就业学员</router-link></li>
+              <li><router-link style="text-decoration:none" to="/luxian" >来校路线</router-link></li>
         </ul>
         <p>
           学校地址：重庆两江新区大竹林华山南路16号<span>商业沟通：niit@niit.com</span>
