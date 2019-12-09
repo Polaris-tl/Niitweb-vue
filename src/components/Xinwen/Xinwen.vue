@@ -6,7 +6,7 @@
     <div class="content clearfix">
       <div class="left fl">
         <NewsList />
-        <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :pageLength="pageLength"/>
+        <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :MaxButtonNumberPerPage="MaxButtonNumberPerPage" :newsPerPage="newsPerPage"/>
       </div>
       <div class="right fl">
         <HotNews />
@@ -103,7 +103,8 @@ export default {
     return {
       totalNews:30,
       curPage:1,
-      pageLength:5,
+      MaxButtonNumberPerPage:4,
+      newsPerPage:8,
       baseUrl:'/xinwen/'
     }
   },

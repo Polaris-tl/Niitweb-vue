@@ -2,7 +2,7 @@
   <p class="pagenation">
     <a :href="baseUrl">首页</a>
     <a :href="baseUrl + prePage">上一页</a>
-    <a :href="baseUrl + (index + 1)" v-for="(item,index) in pages" :key="index" :class="{active:curPage-1 == index}">{{item}}</a>
+    <a :href="baseUrl + (index + 1)" v-for="(item,index) in pages" :key="index" :class="{active:curPage == item}">{{item}}</a>
     <a :href="baseUrl + nextPage">下一页</a>
     <a :href="baseUrl + totalPage">尾页</a>
   </p>
@@ -11,19 +11,23 @@
 <script>
 export default {
   props:{
-    curPage: {
+    curPage: {  //当前页码
         type: Number,
         default: 1
     },
-    totalNews: {
+    totalNews: { //总新闻条数
         type: Number,
         required: true,
     },
-    baseUrl:{
+    baseUrl:{  //根路径
       type:String,
       default:'/'
     },
-    pageLength:{
+    newsPerPage:{ //每页展示的新闻数量
+      type:Number,
+      required:true
+    },
+    MaxButtonNumberPerPage:{  //每页最大渲染pageButton数量
       type:Number,
       default:5
     }
@@ -36,27 +40,29 @@ export default {
       return this.curPage + 1 > this.totalPage ?  this.totalPage : this.curPage + 1
     },
     totalPage(){
-      return Math.ceil(this.totalNews/this.pageLength)
+      return Math.ceil(this.totalNews/this.newsPerPage)
     },
     pages(){
       let arr = []
       let i = 0
-      //根据 pageLength 的奇偶性分两种情况来讨论
-      if(this.pageLength % 2 != 0){
-        console.log("pageLength 为奇数");
+      if(this.curPage > this.totalPage) return []
+      if(this.curPage < 1) return []
+      //根据 MaxButtonNumberPerPage 的奇偶性分两种情况来讨论
+      if(this.MaxButtonNumberPerPage % 2 != 0){
+        console.log("MaxButtonNumberPerPage 为奇数");
         arr[0] = this.curPage
         do {
           if (this.curPage - i > 1) {
             arr.unshift(this.curPage - i - 1)
           }
-          if(arr.length == Math.min(this.pageLength, this.totalPage)) break
+          if(arr.length == Math.min(this.MaxButtonNumberPerPage, this.totalPage)) break
           if (this.curPage + i < this.totalPage ) {
             arr.push(this.curPage + i + 1)
           }
           i++
-        } while (arr.length < Math.min(this.pageLength, this.totalPage));
+        } while (arr.length < Math.min(this.MaxButtonNumberPerPage, this.totalPage));
       }else{
-        console.log("pageLength 为偶数");
+        console.log("MaxButtonNumberPerPage 为偶数");
         do {
           if (this.curPage - i >= 1) {
             arr.unshift(this.curPage - i)
@@ -65,7 +71,7 @@ export default {
             arr.push(this.curPage + i + 1)
           }
           i++
-        } while (arr.length <= Math.min(this.pageLength, this.totalPage));
+        } while (arr.length <= Math.min(this.MaxButtonNumberPerPage, this.totalPage));
       }
       return arr
     }
