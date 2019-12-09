@@ -101,10 +101,10 @@ export default {
   name: "Xinwen",
   data:function(){
     return {
-      totalNews:30,
+      totalNews:70,
       curPage:1,
-      MaxButtonNumberPerPage:4,
-      newsPerPage:8,
+      MaxButtonNumberPerPage:5,
+      newsPerPage:10,
       baseUrl:'/xinwen/'
     }
   },

@@ -1,9 +1,9 @@
 <template>
   <p class="pagenation">
     <a :href="baseUrl">首页</a>
-    <a :href="baseUrl + prePage">上一页</a>
-    <a :href="baseUrl + (index + 1)" v-for="(item,index) in pages" :key="index" :class="{active:curPage == item}">{{item}}</a>
-    <a :href="baseUrl + nextPage">下一页</a>
+    <a :href="baseUrl + prePage" :class="{disable:curPage == 1}">上一页</a>
+    <a :href="baseUrl + (item)" v-for="(item,index) in pages" :key="index" :class="{active:curPage == item}">{{item}}</a>
+    <a :href="baseUrl + nextPage" :class="{disable:curPage == totalPage}">下一页</a>
     <a :href="baseUrl + totalPage">尾页</a>
   </p>
 </template>
@@ -33,23 +33,27 @@ export default {
     }
   },
   computed:{
+    //上一页的路径
     prePage:function(){
       return this.curPage - 1 < 1 ? 1 : this.curPage - 1
     },
+    //下一页的路径
     nextPage:function(){
       return this.curPage + 1 > this.totalPage ?  this.totalPage : this.curPage + 1
     },
+    //新闻总共能分成的页数
     totalPage(){
       return Math.ceil(this.totalNews/this.newsPerPage)
     },
+    //储存新闻路径的数组 (不含baseUrl)
     pages(){
       let arr = []
       let i = 0
-      if(this.curPage > this.totalPage) return []
-      if(this.curPage < 1) return []
+      if(this.curPage > this.totalPage) return arr
+      if(this.curPage < 1) return arr
       //根据 MaxButtonNumberPerPage 的奇偶性分两种情况来讨论
+      //为奇数时
       if(this.MaxButtonNumberPerPage % 2 != 0){
-        console.log("MaxButtonNumberPerPage 为奇数");
         arr[0] = this.curPage
         do {
           if (this.curPage - i > 1) {
@@ -62,16 +66,16 @@ export default {
           i++
         } while (arr.length < Math.min(this.MaxButtonNumberPerPage, this.totalPage));
       }else{
-        console.log("MaxButtonNumberPerPage 为偶数");
+        //为偶数时
         do {
           if (this.curPage - i >= 1) {
             arr.unshift(this.curPage - i)
           }
-          if (this.curPage + i <= this.totalPage) {
+          if (this.curPage + i < this.totalPage) {
             arr.push(this.curPage + i + 1)
           }
           i++
-        } while (arr.length <= Math.min(this.MaxButtonNumberPerPage, this.totalPage));
+        } while (arr.length < Math.min(this.MaxButtonNumberPerPage, this.totalPage));
       }
       return arr
     }
@@ -95,6 +99,10 @@ export default {
     .active{
       background-color: #e1243a;
       color: #fff;
+    }
+    .disable{
+      color: #dadada;
+      // cursor: not-allowed;
     }
   }
 </style>
