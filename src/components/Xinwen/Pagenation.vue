@@ -1,10 +1,28 @@
 <template>
-  <p class="pagenation">
+  <!--模板一： 此模板生成带具体URL的pagenation 型如
+  <a href="baseUrl/1">
+  <a href="baseUrl/2">
+  ... -->
+  <!-- <p class="pagenation">
     <a :href="baseUrl">首页</a>
     <a :href="baseUrl + prePage" :class="{disable:curPage == 1}">上一页</a>
     <a :href="baseUrl + (item)" v-for="(item,index) in pages" :key="index" :class="{active:curPage == item}">{{item}}</a>
     <a :href="baseUrl + nextPage" :class="{disable:curPage == totalPage}">下一页</a>
     <a :href="baseUrl + totalPage">尾页</a>
+  </p> -->
+  <!-- 模板一结束 -->
+
+  
+  <!--模板二： 此模板生成调用父组件方法的pagenation 型如
+  <a @click="update(item)">
+  <a @click="update(item)">
+  ... -->
+  <p class="pagenation">
+    <a @click.prevent="update(1)">首页</a>
+    <a :class="{disable:curPage == 1}" @click.prevent="update(prePage)">上一页</a>
+    <a v-for="(item,index) in pages" :key="index" :class="{active:curPage == item}" @click.prevent="update(item)">{{item}}</a>
+    <a :class="{disable:curPage == totalPage}" @click.prevent="update(nextPage)">下一页</a>
+    <a @click.prevent="update(totalPage)">尾页</a>
   </p>
 </template>
 
@@ -80,6 +98,12 @@ export default {
       return arr
     }
   },
+  methods:{
+    // 仅在使用模板二时开启此方法
+    update(v){
+      this.$emit('update:curPage', v);
+    }
+  }
 }
 </script>
 

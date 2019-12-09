@@ -6,7 +6,7 @@
     <div class="content clearfix">
       <div class="left fl">
         <NewsList />
-        <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :MaxButtonNumberPerPage="MaxButtonNumberPerPage" :newsPerPage="newsPerPage"/>
+        <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :MaxButtonNumberPerPage="MaxButtonNumberPerPage" :newsPerPage="newsPerPage" @update:curPage="methodFromFather"/>
       </div>
       <div class="right fl">
         <HotNews />
@@ -112,6 +112,12 @@ export default {
     NewsList,
     HotNews,
     Pagenation,
+  },
+  methods:{
+    methodFromFather(v){
+      console.log("模拟发起请求，参数：" + v)
+      this.curPage = v
+    }
   }
 };
 </script>
