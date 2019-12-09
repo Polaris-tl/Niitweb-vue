@@ -5,8 +5,7 @@
     </div>
     <div class="content clearfix">
       <div class="left fl">
-        <NewsList />
-        <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :MaxButtonNumberPerPage="MaxButtonNumberPerPage" :newsPerPage="newsPerPage" @update:curPage="methodFromFather"/>
+        <router-view />
       </div>
       <div class="right fl">
         <HotNews />
@@ -94,31 +93,15 @@
   </div>
 </template>
 <script>
-import NewsList from "./NewsList";
-import HotNews from "./HotNews";
-import Pagenation from "./Pagenation";
+import HotNews from "./HotNews"
 export default {
   name: "Xinwen",
   data:function(){
-    return {
-      totalNews:70,
-      curPage:1,
-      MaxButtonNumberPerPage:5,
-      newsPerPage:10,
-      baseUrl:'/xinwen/'
-    }
+    return {}
   },
   components: {
-    NewsList,
     HotNews,
-    Pagenation,
   },
-  methods:{
-    methodFromFather(v){
-      console.log("模拟发起请求，参数：" + v)
-      this.curPage = v
-    }
-  }
 };
 </script>
 

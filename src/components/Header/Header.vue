@@ -21,7 +21,7 @@
               <li><router-link style="text-decoration:none" to="/jianjie">学校简介</router-link></li>
               <li><router-link style="text-decoration:none" to="/shizhi" >师资力量</router-link></li>
               <li><router-link style="text-decoration:none" to="/zhuanye" >开设专业</router-link></li>
-              <li><router-link style="text-decoration:none" to="/xinwen" >学校新闻</router-link></li>
+              <li><router-link style="text-decoration:none" to="/xinwen">学校新闻</router-link></li>
               <li><router-link style="text-decoration:none" to="/xueyuan" >就业学员</router-link></li>
               <li><router-link style="text-decoration:none" to="/luxian" >来校路线</router-link></li>
             </ul>

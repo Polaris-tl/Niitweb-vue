@@ -1,21 +1,30 @@
 <template>
+  <div>
   <ul>
     <li class="clearfix" v-for="(item,index) in content" v-bind:key="index">
       <img src="./images/detail/1056-1.jpg" alt />
       <div class="li-right">
-        <p class="p1">{{item.title}}</p>
+        <p class="p1"><router-link :to="{name:'detail',params:{id:item.news_id}}">{{item.title}}</router-link></p>
         <p class="p2">{{item.content}}</p>
         <p class="p3">{{item.time}} | 作者：{{item.author}} | 来源：{{item.from}}</p>
       </div>
     </li>
   </ul>
+  <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :MaxButtonNumberPerPage="MaxButtonNumberPerPage" :newsPerPage="newsPerPage" @update:curPage="methodFromFather"/>
+  </div>
 </template>
 
 <script>
+import Pagenation from "./Pagenation"
 export default {
   data: function() {
     return {
       cur: 1,
+      totalNews:70,
+      curPage:1,
+      MaxButtonNumberPerPage:5,
+      newsPerPage:10,
+      baseUrl:'/xinwen/',
       content: [
         {
           title: "新闻1111111",
@@ -25,7 +34,7 @@ export default {
           author: "admin",
           from: "重庆互联网学院",
           img_url: "./images/detail/1056-1.jpg",
-          news_id: "./xinwen/1056.html"
+          news_id: "1"
         },
         {
           title: "新闻22222222",
@@ -35,7 +44,7 @@ export default {
           author: "admin",
           from: "重庆互联网学院",
           img_url: "./images/detail/1057-1.jpg",
-          news_id: "./xinwen/1056.html"
+          news_id: "2"
         },
         {
           title: "新闻3333333",
@@ -45,10 +54,19 @@ export default {
           author: "admin",
           from: "重庆互联网学院",
           img_url: "./images/detail/1058-1.jpg",
-          news_id: "./xinwen/1056.html"
+          news_id: "3"
         }
       ]
     };
+  },
+  components:{
+    Pagenation,
+  },
+  methods:{
+    methodFromFather(v){
+      console.log("模拟发起请求，参数：" + v)
+      this.curPage = v
+    }
   }
 };
 </script>
@@ -61,7 +79,7 @@ ul {
     // border-bottom: solid 1px #eee;
     border-top: solid 1px #eee;
     &:hover {
-      .li-right .p1 {
+      .li-right .p1 a{
         color: #ff4545;
       }
     }

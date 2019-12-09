@@ -7,6 +7,8 @@ import Luxian from '../components/Luxian/Luxian.vue'
 import Zhuanye from '../components/Zhuanye/Zhuanye.vue'
 import Xueyuan from '../components/Xueyuan/Xueyuan.vue'
 import Xinwen from '../components/Xinwen/Xinwen.vue'
+import NewsList from '../components/Xinwen/NewsList.vue'
+import NewsDetail from '../components/Xinwen/NewsDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -17,7 +19,19 @@ const routes = [
   { path: '/luxian', component: Luxian },
   { path: '/zhuanye', component: Zhuanye },
   { path: '/xueyuan', component: Xueyuan },
-  { path: '/Xinwen', component: Xinwen },
+  { path: '/xinwen', component: Xinwen ,
+    children: [
+      {
+        path: '',
+        component: NewsList
+      },
+      {
+        name:'detail',
+        path: 'detail/:id',
+        component: NewsDetail
+      }
+    ]
+  },
 ]
 const router = new VueRouter({
   routes,
