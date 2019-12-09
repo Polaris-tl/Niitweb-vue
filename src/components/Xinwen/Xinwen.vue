@@ -6,8 +6,7 @@
     <div class="content clearfix">
       <div class="left fl">
         <NewsList />
-        <Pagenation />
-        <Pagenation2 :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl"/>
+        <Pagenation :curPage="curPage" :totalNews="totalNews" :baseUrl="baseUrl" :pageLength="pageLength"/>
       </div>
       <div class="right fl">
         <HotNews />
@@ -98,13 +97,13 @@
 import NewsList from "./NewsList";
 import HotNews from "./HotNews";
 import Pagenation from "./Pagenation";
-import Pagenation2 from "./Pagenation2";
 export default {
   name: "Xinwen",
   data:function(){
     return {
       totalNews:30,
       curPage:1,
+      pageLength:5,
       baseUrl:'/xinwen/'
     }
   },
@@ -112,7 +111,6 @@ export default {
     NewsList,
     HotNews,
     Pagenation,
-    Pagenation2,
   }
 };
 </script>
