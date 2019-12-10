@@ -23,9 +23,6 @@
             </li>
           </ul>
         </div>
-        <listScroll>
-          <div>asdasd</div>
-        </listScroll>
         <div class="section section1">
           <div class="title">
             <p>学院简介</p>
@@ -73,7 +70,8 @@
                 <li style="width:13%">已报/名额</li>
                 <li style="width:18%">学历服务</li>
               </ul>
-              <div class="emplyoee">
+              <!-- <div class="emplyoee"> -->
+              <listScroll class="emplyoee">
                 <ul class="emply-body clearfix" style="marginTop: 0px">
                   <li>
                     <span>孙*</span>
@@ -148,14 +146,16 @@
                     <span style="width:18%">中专/大专/本科</span>
                   </li>
                 </ul>
-              </div>
+              </listScroll>
+              <!-- </div> -->
             </div>
             <div class="mid fl">
               <div class="head">
                 <p>学员就业薪资表</p>
                 <p class="more"><a to="./xueyuan">查看更多</a></p>
               </div>
-              <div class="data" id="data">
+              <!-- <div class="data" id="data"> -->
+              <listScroll class="data" :line="1" :speed="600" :timer="2000" :ease="linear">
                 <ul>
                   <li class="clearfix">
                     <p>陈*力</p>
@@ -218,7 +218,8 @@
                     <p>9000元</p>
                   </li>
                 </ul>
-              </div>
+              </listScroll> 
+              <!-- </div> -->
             </div>
             <div class="right fl">
               <div class="head">
@@ -361,7 +362,6 @@
 
 <script>
 import $ from 'jquery'
-import '../../js/listScroll'
 import NumberScroll from './NumberScroll'
 import listScroll from './ListScroll'
 
@@ -377,17 +377,6 @@ export default {
       $(this).hide();
       $(".my-video").show();
       $("#video")[0].play();
-    });
-    //数字滚动
-    $("#data").Scroll({
-      line: 1,
-      speed: 500,
-      timer: 2500
-    });
-    $(".emplyoee").Scroll({
-      line: 1,
-      speed: 500,
-      timer: 2000
     });
       //切换图片
     $("#opt").click(
@@ -631,11 +620,12 @@ export default {
   
   .section2 {
     margin-top: 33px;
-  
+    
     .content {
       width : 1200px;
       margin: 52px auto 20px auto;
-  
+
+      
       .left {
         .emply-head {
           position        : relative;
@@ -670,18 +660,13 @@ export default {
           }
         }
   
-        .emplyoee {
+        /deep/ .emplyoee {
           height  : 396px;
           overflow: hidden;
-        }
-  
-        .emply-body {
+          .emply-body {
           width        : 691px;
-          // position  : relative;
           border-radius: 4px;
           margin-top   : 0;
-  
-          // transition: all 0.6s ease;
           li {
             background-color: rgb(248, 248, 248);
   
@@ -702,16 +687,13 @@ export default {
               font-family: "Microsoft YaHei";
               color      : rgb(109, 109, 109);
             }
-  
-            // &:nth-child(even) {
-            //   background-color: #ececec;
-            // }
           }
   
         }
+        }
       }
   
-      .mid {
+      /deep/  .mid {
         width        : 298px;
         margin-left  : 10px;
         border-radius: 3px;
