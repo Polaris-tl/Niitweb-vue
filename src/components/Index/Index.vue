@@ -100,6 +100,15 @@
                     <span style="width:13%">44/60</span>
                     <span style="width:18%">中专/大专/本科</span>
                   </li>
+                  <li>
+                    <span>孙*</span>
+                    <span>3年制</span>
+                    <span>初二</span>
+                    <span style="width:20%">嵌入式开发工程师</span>
+                    <span style="width:25%">新*讯信息科技有限公司</span>
+                    <span style="width:13%">95/103</span>
+                    <span style="width:18%">中专/大专/本科</span>
+                  </li>
                   <li style="backgroundColor: #ececec">
                     <span>曾*</span>
                     <span>3年制</span>
@@ -116,6 +125,15 @@
                     <span style="width:20%">Linux系统运维工程师</span>
                     <span style="width:25%">物**云信息科技有限公司</span>
                     <span style="width:13%">52/60</span>
+                    <span style="width:18%">中专/大专/本科</span>
+                  </li>
+                  <li>
+                    <span>孙*</span>
+                    <span>3年制</span>
+                    <span>初二</span>
+                    <span style="width:20%">嵌入式开发工程师</span>
+                    <span style="width:25%">新*讯信息科技有限公司</span>
+                    <span style="width:13%">95/103</span>
                     <span style="width:18%">中专/大专/本科</span>
                   </li>
                   <li style="backgroundColor: #ececec">
@@ -155,7 +173,7 @@
                 <p class="more"><a to="./xueyuan">查看更多</a></p>
               </div>
               <!-- <div class="data" id="data"> -->
-              <listScroll class="data" :line="1" :speed="600" :timer="2000" :ease="linear">
+              <listScroll class="data" :line="1" :speed="600" :timer="2000" :ease="'linear'">
                 <ul>
                   <li class="clearfix">
                     <p>陈*力</p>
@@ -362,8 +380,8 @@
 
 <script>
 import $ from 'jquery'
-import NumberScroll from './NumberScroll'
-import listScroll from './ListScroll'
+import NumberScroll from '../common/NumberScroll'
+import listScroll from '../common/ListScroll'
 
 export default {
   name:'Index',

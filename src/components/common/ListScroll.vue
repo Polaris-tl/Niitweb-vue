@@ -36,7 +36,7 @@ export default {
       type:Number,
       default:2500
     },
-    ease:{//css动画曲线
+    ease:{//css动画曲线 linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
       type:String,
       default:'ease'
     },

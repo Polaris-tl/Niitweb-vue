@@ -106,7 +106,8 @@
                 </div>
                 <div class="right fl">
                   <div class="location">重庆校区</div>
-                  <div class="box" id="box1">
+                  <!-- <div class="box" id="box1"> -->
+                    <listScroll class="box">
                     <ul>
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
@@ -131,7 +132,8 @@
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
                     </ul>
-                  </div>
+                    </listScroll>
+                  <!-- </div> -->
                 </div>
                 <i class="clearfix"></i>
                 <div class="bot">
@@ -179,7 +181,8 @@
                 </div>
                 <div class="right fl">
                   <div class="location">重庆校区</div>
-                  <div class="box" id="box2">
+                  <!-- <div class="box" id="box2"> -->
+                    <listScroll class="box">
                     <ul>
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
@@ -204,7 +207,8 @@
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
                     </ul>
-                  </div>
+                    </listScroll>
+                  <!-- </div> -->
                 </div>
                 <i class="clearfix"></i>
                 <div class="bot">
@@ -252,7 +256,8 @@
                 </div>
                 <div class="right fl">
                   <div class="location">重庆校区</div>
-                  <div class="box" id="box3">
+                  <!-- <div class="box" id="box3"> -->
+                    <listScroll class="box">
                     <ul>
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
@@ -277,7 +282,8 @@
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
                     </ul>
-                  </div>
+                    </listScroll>
+                  <!-- </div> -->
                 </div>
                 <i class="clearfix"></i>
                 <div class="bot">
@@ -325,7 +331,8 @@
                 </div>
                 <div class="right fl">
                   <div class="location">重庆校区</div>
-                  <div class="box" id="box4">
+                  <!-- <div class="box" id="box4"> -->
+                    <listScroll class="box">
                     <ul>
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
@@ -350,7 +357,8 @@
                       <li><span class="type">基础班</span><span class="time">2019-10-10</span><span class="status">报名中</span>
                       </li>
                     </ul>
-                  </div>
+                    </listScroll>
+                  <!-- </div> -->
                 </div>
                 <i class="clearfix"></i>
                 <div class="bot">
@@ -441,24 +449,19 @@
 </template>
 <script>
 import AOS from 'aos'
-import $ from 'jquery'
+import listScroll from '../common/ListScroll'
 import '../../../node_modules/aos/dist/aos.css';
 
 export default {
   name:'Xueyuan',
+  components:{
+    listScroll,
+  },
   mounted(){
     AOS.init({
 			easing: 'ease-out-back',
 			duration: 1000
 		});
-    var scrollIds = ['#box1', '#box2', '#box3', '#box4']
-    scrollIds.forEach((item) => {
-      $(item).Scroll({
-        line: 1,
-        speed: 500,
-        timer: 2500
-      });
-    })
   }
 }
 </script>

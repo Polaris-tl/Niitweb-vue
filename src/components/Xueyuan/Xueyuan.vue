@@ -43,7 +43,8 @@
                   <span class="s5">薪资</span>
                 </p>
                 <div>
-                <div class="list-body" id="data">
+                <!-- <div class="list-body" id="data"> -->
+                <listScroll class="list-body">
                   <ul>
                     <li class="clearfix">
                       <span class="s1">许*硕</span>
@@ -130,7 +131,8 @@
                       <span class="s5">9000</span>
                     </li>
                   </ul>
-                </div>
+                </listScroll>
+                <!-- </div> -->
                 </div>
               </div>
             </div>
@@ -176,16 +178,12 @@
       </div>
 </template>
 <script>
-import $ from 'jquery'
+import listScroll from '../common/ListScroll'
 
 export default {
   name:'Xueyuan',
-  mounted(){
-    $("#data").Scroll({
-      line: 1,
-      speed: 500,
-      timer: 2500
-    });
+  components:{
+    listScroll,
   }
 }
 </script>
