@@ -6,23 +6,26 @@
         <div class="cool">
           <ul class="clearfix">
             <li class="fl">
-              <p><span id="count1">38</span><span>年</span></p>
+              <p><NumberScroll :number="38"/><span>年</span></p>
               <p><span>成立自1981年</span></p>
             </li>
             <li class="fl">
-              <p><span id="count2">33</span><span>国家</span></p>
+              <p><NumberScroll :number="33" /><span>国家</span></p>
               <p><span>遍及33个国家</span></p>
             </li>
             <li class="fl">
-              <p><span id="count3">3800</span><span>中心</span></p>
+              <p><NumberScroll :number="3800"/><span>中心</span></p>
               <p><span>3800所直属分校</span></p>
             </li>
             <li class="fl">
-              <p><span id="count4">500</span>万<span>+学员</span></p>
+              <p><NumberScroll :number="500"/>万<span>+学员</span></p>
               <p><span>毕业学员500万+人才</span></p>
             </li>
           </ul>
         </div>
+        <listScroll>
+          <div>asdasd</div>
+        </listScroll>
         <div class="section section1">
           <div class="title">
             <p>学院简介</p>
@@ -359,12 +362,16 @@
 <script>
 import $ from 'jquery'
 import '../../js/listScroll'
-import '../../js/count'
+import NumberScroll from './NumberScroll'
+import listScroll from './ListScroll'
 
 export default {
   name:'Index',
+  components:{
+    NumberScroll,
+    listScroll,
+  },
   mounted(){
-    console.log($(".fake-layer"))
     //视频播放控制
     $(".fake-layer").click(function () {
       $(this).hide();
@@ -382,16 +389,6 @@ export default {
       speed: 500,
       timer: 2000
     });
-    //数字动画
-    var moveNum = [{countId: 'count1',num: 38},{countId: 'count2',num: 33},{countId: 'count3',num: 3800},{countId: 'count4',num: 500}
-      ]
-      moveNum.map((item) => {
-        $("#" + item.countId).numberRock({
-          lastNumber: item.num,
-          duration: 1000,
-          easing: 'swing'
-        });
-      })
       //切换图片
     $("#opt").click(
       function (e) {
