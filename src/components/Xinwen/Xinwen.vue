@@ -159,6 +159,7 @@ export default {
         border: 1px solid #d8d8d8;
         border-radius: 3px;
         margin: 0 5px 6px 0;
+        font-size: 14px;
         &:hover {
           border: 1px solid #ffacac;
           color: #ff4545;

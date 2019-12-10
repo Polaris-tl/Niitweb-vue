@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="artical">
     <p class="title">id为：{{id}}的标题</p>
     <p class="info">
@@ -11,6 +12,14 @@
       <p>id为：{{id}}的内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
     </div>
   </div>
+  <p class="pagenation">
+    <router-link :to="{name:'detail',params:{id:Number(id) - 1}}">
+      <span v-if="Number(id) - 1 < 1" class="disable">上一篇：无</span>
+      <span v-else>上一篇：：新闻id{{Number(id) - 1}}</span>
+    </router-link>
+    <router-link :to="{name:'detail',params:{id:Number(id)+1}}"><span>下一篇：新闻id{{Number(id) + 1}}</span></router-link>
+  </p>
+</div>
 </template>
 
 <script>
@@ -21,8 +30,15 @@ export default {
     };
   },
   mounted(){
-    alert("加载数据")
-  }
+    console.log("加载数据")
+  },
+  updated(){
+    console.log("update")
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.id = to.params.id
+    next()
+    },
 };
 </script>
 
@@ -62,5 +78,25 @@ export default {
         margin-top: 20px;
       }
     }
+  }
+  .pagenation{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 12px;
+    span{
+      padding: 4px 10px;
+      display: inline-block;
+      color: #9d9896;
+      margin-right: 16px;
+      border-radius: 2px;
+      &:hover:not(.disable){
+        background-color: #ff2f2f;
+        color: #fff;
+      }
+    }
+    .disable{
+      color: #cecece;
+    }
+    
   }
 </style>
