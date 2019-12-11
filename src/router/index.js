@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Shizi from '../components/Shizhi/Shizhi'
 import Jianjie from '../components/Jianjie/Jianjie.vue'
 import Index from '../components/Index/Index.vue'
@@ -34,6 +35,7 @@ const routes = [
   },
 ]
 const router = new VueRouter({
+  mode: 'history',
   routes,
   linkActiveClass:'active'
 })

@@ -10,6 +10,7 @@
 import Header from './components/Header/Header.vue'
 import Footer from './components/Footer/Footer.vue'
 import router from './router/index'
+import store from './store/store.js'
 
 export default {
   name: 'app',
@@ -17,7 +18,8 @@ export default {
     Header,
     Footer
   },
-  router
+  router,
+  store
 }
 </script>
 

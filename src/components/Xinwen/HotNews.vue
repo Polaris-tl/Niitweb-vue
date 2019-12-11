@@ -1,11 +1,11 @@
 <template>
   <div class="part1">
-    <p class="partname">当月热门文章</p>
+    <p class="partname" :style="{color:this.$store.state.color}">当月热门文章</p>
     <div class="box">
       <ul>
         <a  :key="index" v-for="(item,index) in hotnews">
           <li class="clearfix">
-            <p>{{item.title}}</p>
+            <p :style="{color:$store.state.color}">{{item.title}}</p>
             <img src="./images/detail/1057-1.jpg" alt="" />
           </li>
         </a>

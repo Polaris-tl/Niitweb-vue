@@ -6,6 +6,17 @@
     <div class="content clearfix">
       <div class="left fl">
         <router-view />
+        <div :style="{color:this.$store.state.color}">{{this.$store.getters.color}}
+          <input type="color" @change="handleChange" :value="this.$store.state.color"/>
+          <hr />
+          dispatch异步设置color为红色 =>Promise
+          <button  @click="handleClick" >开始</button>
+          <hr />
+          dispatch异步设置color为蓝色 =>Asyn/Await
+          <button  @click="handleClick2" >开始</button>
+          <hr />
+          <p>颜色改变中：{{this.$store.state.loading}}</p>
+        </div>
       </div>
       <div class="right fl">
         <HotNews />
@@ -102,10 +113,39 @@ export default {
   components: {
     HotNews,
   },
+  methods:{
+    handleChange(e){
+      this.$store.commit('changecolor',e.target.value)
+    },
+    handleClick(){
+      this.$store.dispatch('changecolorAsyn',"red")
+      .then(() => {
+        alert("恭喜你，你变红了！")
+      })
+    },
+    handleClick2(){
+      this.$store.dispatch('changecolorAsyn2',"blue")
+      .then(() => {
+        alert("恭喜你，你变蓝了！")
+      })
+      
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
+button{
+      display: inline-block;
+    height: 32px;
+    width: 93px;
+    background: #55c0ff;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+    margin: 4px;
+    color: #fff;
+}
 .banner {
   width: 1200px;
   margin: auto;

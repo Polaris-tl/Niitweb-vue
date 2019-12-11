@@ -4,9 +4,9 @@
     <li class="clearfix" v-for="(item,index) in content" v-bind:key="index">
       <img src="./images/detail/1056-1.jpg" alt />
       <div class="li-right">
-        <p class="p1"><router-link :to="{name:'detail',params:{id:item.news_id}}">{{item.title}}</router-link></p>
-        <p class="p2">{{item.content}}</p>
-        <p class="p3">{{item.time}} | 作者：{{item.author}} | 来源：{{item.from}}</p>
+        <p class="p1" :style="{color:$store.state.color}"><router-link :to="{name:'detail',params:{id:item.news_id}}">{{item.title}}</router-link></p>
+        <p class="p2" :style="{color:$store.state.color}">{{item.content}}</p>
+        <p class="p3" :style="{color:$store.state.color}">{{item.time}} | 作者：{{item.author}} | 来源：{{item.from}}</p>
       </div>
     </li>
   </ul>
