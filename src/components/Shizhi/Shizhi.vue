@@ -122,29 +122,29 @@
               <ul class="clearfix" id="numScroll">
                 <a href="http://awt.zoosnet.net/LR/Chatpre.aspx?id=AWT24214282&lng=cn">
                   <li><img src="./images/ten.png" alt="" />
-                    <p class="num"><span id="count1">10</span>%</p>
-                    <p class="p1"><span id="count11">10</span>%顶尖级讲师</p>
+                    <p class="num"><NumberScroll v-if="show" :number="10"/>%</p>
+                    <p class="p1"><NumberScroll v-if="show" :number="10"/>%顶尖级讲师</p>
                     <p class="p2">行业权威人物</p>
                   </li>
                 </a>
                 <a href="http://awt.zoosnet.net/LR/Chatpre.aspx?id=AWT24214282&lng=cn">
                   <li><img src="./images/twenty.png" alt="" />
-                    <p class="num"><span id="count2">20</span>%</p>
-                    <p class="p1"><span id="count22">20</span>%顶尖级讲师</p>
+                    <p class="num"><NumberScroll v-if="show" :number="20"/>%</p>
+                    <p class="p1"><NumberScroll v-if="show" :number="20"/>%顶尖级讲师</p>
                     <p class="p2">3年+项目开发经验</p>
                   </li>
                 </a>
                 <a href="http://awt.zoosnet.net/LR/Chatpre.aspx?id=AWT24214282&lng=cn">
                   <li><img src="./images/thirty.png" alt="" />
-                    <p class="num"><span id="count3">30</span>%</p>
-                    <p class="p1"><span id="count33">30</span>%顶尖级讲师</p>
+                    <p class="num"><NumberScroll v-if="show" :number="30"/>%</p>
+                    <p class="p1"><NumberScroll v-if="show" :number="30"/>%顶尖级讲师</p>
                     <p class="p2">出版图书90余本</p>
                   </li>
                 </a>
                 <a href="http://awt.zoosnet.net/LR/Chatpre.aspx?id=AWT24214282&lng=cn">
                   <li><img src="./images/fourty.png" alt="" />
-                    <p class="num"><span id="count4">40</span>%</p>
-                    <p class="p1"><span id="count44">40</span>%顶尖级讲师</p>
+                    <p class="num"><NumberScroll v-if="show" :number="40"/>%</p>
+                    <p class="p1"><NumberScroll v-if="show" :number="40"/>%顶尖级讲师</p>
                     <p class="p2">参与项目研发课程设计</p>
                   </li>
                 </a>
@@ -325,84 +325,22 @@
       </div>
 </template>
 <script>
-import $ from 'jquery'
 import Swiper from 'swiper'
+import NumberScroll from '../common/NumberScroll'
 import '../../../node_modules/swiper/css/swiper.min.css'
 
 export default {
   name:'Shizhi',
+  components:{
+    NumberScroll,
+  },
+  data(){
+    return({
+      show:false
+    })
+  },
   mounted(){
-    var flag = true
-
-    function isInscreen(ele, perc) {
-      if (ele == undefined) return false
-      var boxTop
-      boxTop = ele.getBoundingClientRect().top;
-      var screenHeight = window.screen.availHeight;
-      var realPenc = boxTop / screenHeight
-      if (realPenc < perc && flag) {
-        flag = false
-        return scrolllll()
-        // window.removeEventListener
-      }
-      return false
-    }
-
-    function throttle(fn, wait) {
-      var flag = true;
-      var timer = undefined;
-      console.log(timer);
-      return function () {
-        if (flag) {
-          fn.apply(this, arguments);
-          flag = false;
-          timer = setTimeout(() => {
-            flag = true
-          }, wait)
-        }
-      }
-    }
-    var ele = document.getElementById('numScroll')
-
-    function isInscreen2() {
-      isInscreen(ele, 0.4)
-    }
-    window.addEventListener("scroll", throttle(isInscreen2, 100))
-
-    function scrolllll() {
-      var moveNum = [{
-        countId: 'count1',
-        num: 10
-      }, {
-        countId: 'count11',
-        num: 10
-      }, {
-        countId: 'count2',
-        num: 20
-      }, {
-        countId: 'count22',
-        num: 20
-      }, {
-        countId: 'count3',
-        num: 30
-      }, {
-        countId: 'count33',
-        num: 33
-      }, {
-        countId: 'count4',
-        num: 40
-      }, {
-        countId: 'count44',
-        num: 40
-      }]
-      moveNum.map((item) => {
-        $("#" + item.countId).numberRock({
-          lastNumber: item.num,
-          duration: 1250,
-          easing: 'swing'
-        });
-      })
-    }
+    window.addEventListener("scroll", this.throttle(this.switch,500))
     new Swiper('#swiper1', {
       slidesPerView: 5,
       spaceBetween: 28,
@@ -420,6 +358,40 @@ export default {
       autoplay: true,
       loop: true,
     })
+  },
+  methods:{
+    switch(){
+      var ele = document.getElementById('numScroll')
+      if(this.isInscreen(ele, 0.6)){
+        return this.show = true
+      }
+      return this.show = false
+    },
+    throttle(fn, wait) {
+      var flag = true;
+      var timer = undefined;
+      console.log(timer);
+      return function () {
+        if (flag) {
+          fn.apply(this, arguments);
+          flag = false;
+          timer = setTimeout(() => {
+            flag = true
+          }, wait)
+        }
+      }
+    },
+    isInscreen(ele, perc) {
+      if (ele == undefined) return false
+      var boxTop = null
+      boxTop = ele.getBoundingClientRect().top;
+      var screenHeight = window.screen.availHeight;
+      var realPenc = boxTop / screenHeight
+      if (realPenc < perc) {
+         return true
+      }
+      return false
+    }
   }
 }
 </script>
