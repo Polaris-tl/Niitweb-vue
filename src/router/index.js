@@ -11,15 +11,15 @@ import VueRouter from 'vue-router'
 // import NewsList from '../components/Xinwen/NewsList.vue'
 // import NewsDetail from '../components/Xinwen/NewsDetail.vue'
 //实现异步加载
-const Shizi = () => import('../components/Shizhi/Shizhi')  
-const Jianjie = () => import('../components/Jianjie/Jianjie.vue')  
-const Index = () => import('../components/Index/Index.vue')  
-const Luxian = () => import('../components/Luxian/Luxian.vue')  
-const Zhuanye = () => import('../components/Zhuanye/Zhuanye.vue')  
-const Xueyuan = () => import('../components/Xueyuan/Xueyuan.vue')  
-const Xinwen = () => import('../components/Xinwen/Xinwen.vue')  
-const NewsList = () => import('../components/Xinwen/NewsList.vue')  
-const NewsDetail = () => import('../components/Xinwen/NewsDetail.vue')  
+const Shizi = () => import(/* webpackChunkName: "tangling1" */ '../components/Shizhi/Shizhi')  
+const Jianjie = () => import(/* webpackChunkName: "tangling1" */ '../components/Jianjie/Jianjie.vue')  
+const Index = () => import(/* webpackChunkName: "tangling1" */ '../components/Index/Index.vue')  
+const Luxian = () => import(/* webpackChunkName: "tangling2" */ '../components/Luxian/Luxian.vue')  
+const Zhuanye = () => import(/* webpackChunkName: "tangling2" */ '../components/Zhuanye/Zhuanye.vue')  
+const Xueyuan = () => import(/* webpackChunkName: "tangling2" */ '../components/Xueyuan/Xueyuan.vue')  
+const Xinwen = () => import(/* webpackChunkName: "tangling3" */ '../components/Xinwen/Xinwen.vue')  
+const NewsList = () => import(/* webpackChunkName: "tangling3" */ '../components/Xinwen/NewsList.vue')  
+const NewsDetail = () => import(/* webpackChunkName: "tangling4" */ '../components/Xinwen/NewsDetail.vue')  
 
 Vue.use(VueRouter)
 
